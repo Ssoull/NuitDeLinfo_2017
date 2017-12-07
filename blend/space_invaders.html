@@ -148,13 +148,15 @@
             var right=false;
             var t=false;
             var ship = new Image();
-            ship.src = "Space_invaders_Rayman.png";
+            ship.src = "images/Space_invaders_Rayman.png";
             var alien = new Image();
-            alien.src = "Space_Invaders_Alien.png";
+            alien.src = "images/Space_invaders_trumpets.png";
+            var alien2 = new Image();
+            alien2.src = "images/Space_invaders_trumpets2.png";
             var missile =new Image();
-            missile.src = "Space_invaders_poing.png";
+            missile.src = "images/Space_invaders_poing.png";
             var go = new Image();
-            go.src="gameover.png";
+            go.src="images/gameover.png";
 
 
             var aliens =[[100,150,1],[150,150,1],[200,150,1],[250,150,1],[300,150,1],[350,150,1],[400,150,1],[450,150,1],[500,150,1],[550,150,1],
@@ -211,10 +213,13 @@
                             context=game_area.getContext('2d');
                             context.clearRect(0,0,675,800);
                             context.drawImage(gameover,152,280,360,240);
-                            onexit()
+                            onexit();
 
                         }
-                        context.drawImage(alien,aliens[pas][0],aliens[pas][1],32,32);
+                        if (decalage>0)
+                        	context.drawImage(alien2,aliens[pas][0],aliens[pas][1],32,32);
+                        if (decalage<0)
+                            context.drawImage(alien,aliens[pas][0],aliens[pas][1],32,32);
                         aliens[pas][0]+=decalage;
                     }
 
