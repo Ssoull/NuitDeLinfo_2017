@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Blend &mdash; Free HTML5 Bootstrap Website Template by FreeHTML5.co</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FreeHTML5.co" />
+
+  <!-- 
+	//////////////////////////////////////////////////////
+
+	FREE HTML5 TEMPLATE 
+	DESIGNED & DEVELOPED by FreeHTML5.co
+		
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
+
+	//////////////////////////////////////////////////////
+	 -->
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Owl Carousel -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+	<body>
+
+	<div id="fh5co-page">
+
+		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+		<aside id="fh5co-aside" role="complementary" class="border">
+
+			<h1 id="fh5co-logo"><a href="index.html"><img src="images/logo-colored.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
+			<nav id="fh5co-main-menu" role="navigation">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="portfolio.html">Photos</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+
+			<div class="fh5co-footer">
+				<p><small>&copy; 2016 Blend Free HTML5. All Rights Reserved.</span> <span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="http://pexels.com/" target="_blank">Pexels</a></span></small></p>
+				<ul>
+					<li><a href="#"><i class="icon-facebook"></i></a></li>
+					<li><a href="#"><i class="icon-twitter"></i></a></li>
+					<li><a href="#"><i class="icon-instagram"></i></a></li>
+					<li><a href="#"><i class="icon-linkedin"></i></a></li>
+				</ul>
+			</div>
+
+		</aside>
+
+
+		<canvas id="game_area" width="675" height="800"></canvas>
+		<script type="text/javascript">
+
+            document.onkeydown = function(event) {
+                var key_pressed;
+                if(event == null){
+                    key_pressed = window.event.keyCode;
+                }
+                else {
+                    key_pressed = event.keyCode;
+                }
+                switch(key_pressed){
+                    case 37:
+                        left=true;
+                        break;
+                    case 39:
+                        right=true;
+                        break;
+                    case 84:
+                        t=true;
+                        break;
+
+                }
+            }
+
+            document.onkeyup = function(event) {
+                var key_pressed;
+                if(event == null){
+                    key_pressed = window.event.keyCode;
+                }
+                else {
+                    key_pressed = event.keyCode;
+                }
+                switch(key_pressed){
+                    case 37:
+                        left=false;
+                        break;
+                    case 39:
+                        right=false;
+                        break;
+                    case 84:
+                        t=false;
+                        break;
+                }
+            }
+
+            var context;
+            var x_speed=0;
+            var y=750;
+            var x=250;
+            var left=false;
+            var right=false;
+            var t=false;
+            var ship = new Image();
+            ship.src = "Space_invaders_Rayman.png";
+            var alien = new Image();
+            alien.src = "Space_Invaders_Alien.png";
+            var missile =new Image();
+            missile.src = "Space_invaders_poing.png";
+            var go = new Image();
+            go.src="gameover.png";
+
+
+            var aliens =[[100,150,1],[150,150,1],[200,150,1],[250,150,1],[300,150,1],[350,150,1],[400,150,1],[450,150,1],[500,150,1],[550,150,1],
+                [100,200,1],[150,200,1],[200,200,1],[250,200,1],[300,200,1],[350,200,1],[400,200,1],[450,200,1],[500,200,1],[550,200,1],
+                [100,250,1],[150,250,1],[200,250,1],[250,250,1],[300,250,1],[350,250,1],[400,250,1],[450,250,1],[500,250,1],[550,250,1],
+                [100,300,1],[150,300,1],[200,300,1],[250,300,1],[300,300,1],[350,300,1],[400,300,1],[450,300,1],[500,300,1],[550,300,1]];
+            var decalage = 2;
+            var pause =1;
+            var pau=0;
+            var decal=0;
+
+            var tab_missile=[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
+            var delai_missile=0;
+            var numero_missile=0;
+            vivants=40;
+
+
+            function on_enter_frame(){
+
+                if (pau!=pause){
+                    pau+=1;
+                    return;
+                }
+                if(left){
+                    x-=5;
+                }
+                if(right){
+
+                    x+=5;
+                }
+
+
+                context=game_area.getContext('2d');
+                context.clearRect(0,0,675,800);
+                context.beginPath();
+                context.fillStyle="#000000";
+                if (vivants >0){
+                    context.drawImage(ship,x,y,32,40);
+                }
+
+                decal=decalage;
+                for (var pas = 0;pas<aliens.length;pas++){
+
+                    if (aliens[pas][2]==1){
+                        if ((decal==decalage)&&(aliens[pas][0]<=20 || aliens[pas][0]>=640)){
+                            decalage*=-1;
+                            for (var i=0;i<aliens.length;i++){
+                                aliens[i][1]+=10;
+                            }
+
+
+                        }
+                        if (aliens[pas][1]==720) {
+                            context=game_area.getContext('2d');
+                            context.clearRect(0,0,675,800);
+                            context.drawImage(gameover,152,280,360,240);
+                            onexit()
+
+                        }
+                        context.drawImage(alien,aliens[pas][0],aliens[pas][1],32,32);
+                        aliens[pas][0]+=decalage;
+                    }
+
+                }
+
+
+
+                if(t && delai_missile==0){
+
+                    delai_missile=20;
+                    tab_missile[numero_missile][0]=x+8;
+                    tab_missile[numero_missile][1]=y-8;
+                    tab_missile[numero_missile][2]=1;
+                    context.drawImage(missile,x+8,y-8,16,16);
+                    numero_missile+=1;
+                    if (numero_missile>= tab_missile.length){
+                        numero_missile=0;
+                    }
+                }
+                if (delai_missile!=0){
+                    delai_missile-=1;
+
+                }
+
+                for (var j= 0;j<tab_missile.length;j++){
+                    if (tab_missile[j][2]==1){
+                        tab_missile[j][1]-=5;
+                        context.drawImage(missile,tab_missile[j][0],tab_missile[j][1],16,16);
+
+                        for (var e =0;e<aliens.length;e++){
+                            if (aliens[e][2]==1){
+                                if ((tab_missile[j][0]+8>=aliens[e][0] && tab_missile[j][0]+8<=aliens[e][0]+32)&&(tab_missile[j][1]<=aliens[e][1]+32 && tab_missile[j][1]>=aliens[e][1])){
+                                    aliens[e][2]=0;
+                                    tab_missile[j][2]=0;
+
+                                    vivants-=1;
+
+                                }
+                            }
+
+                        }
+
+                    }
+                }
+
+
+
+
+
+
+
+
+                context.closePath();
+                context.fill();
+            }
+
+
+            setInterval(on_enter_frame,25);
+
+		</script>
+	</div>
+
+
+	</body>
+</html>
+
