@@ -47,6 +47,7 @@
 			<h1 id="fh5co-logo"><a href="../index.html"><img src="../images/logo-colored.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
+					<h2>Move with Arrow <br>Shoot with Space</h2>
 					<li class="fh5co-active"><a href="14_december.html">Play Again</a></li>
 					<li><a href="../index.html">Retour</a></li>
 				</ul>
@@ -77,7 +78,7 @@
                     case 39:
                         right=true;
                         break;
-                    case 84:
+                    case 32:
                         t=true;
                         break;
 
@@ -99,7 +100,7 @@
                     case 39:
                         right=false;
                         break;
-                    case 84:
+                    case 32:
                         t=false;
                         break;
                 }
@@ -182,9 +183,9 @@
 
                         }
                         if (decalage>0)
-                        	context.drawImage(alien2,aliens[pas][0],aliens[pas][1],32,32);
+                        	context.drawImage(alien2,aliens[pas][0],aliens[pas][1],32,24);
                         if (decalage<0)
-                            context.drawImage(alien,aliens[pas][0],aliens[pas][1],32,32);
+                            context.drawImage(alien,aliens[pas][0],aliens[pas][1],32,24);
                         aliens[pas][0]+=(decalage);
                     }
 
