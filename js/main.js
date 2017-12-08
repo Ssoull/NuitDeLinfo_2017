@@ -2,6 +2,31 @@
 	
 	'use strict';
 
+    $( document ).ready(function () {
+        var buttonPlay = $( "#buttonPlay" );
+
+        buttonPlay.mouseover(function () {
+            buttonPlay.css("background", "#2090ff");
+        });
+
+        buttonPlay.mouseout(function() {
+            buttonPlay.css("background", "#0077ee");
+        });
+
+        buttonPlay.mousedown(function () {
+            var txtButtonPlay = buttonPlay.text();
+            var radio = $( "#radio" );
+
+            if (txtButtonPlay === "Play") {
+                buttonPlay.html("Stop");
+                radio.trigger('play');
+            }
+            else {
+                buttonPlay.html("Play");
+                radio.trigger('pause');
+            }
+        })
+    });
 
 
 	var isMobile = {
@@ -178,4 +203,18 @@
 	});
 
 
+    $.getJSON('https://www.radioking.com/widgets/currenttrack.php?radio=116593&format=json', function(data) {
+        var album  = data.album;
+        var cover  = data.cover;
+        var artist = data.artist;
+
+        var albumId = $( "#album" );
+        album !== null ? albumId.html("Titre : " + album) : albumId.html("Titre : Error 404 Title not found !");
+
+        var coverId = $( "#cover" );
+        cover !== null ? coverId.attr("src", cover) : coverId.attr("src", "");
+
+        var artistId = $( "#artist" );
+        artist !== null ? artistId.html("Artist : " + artist) : artistId.html("Artist : Error 404 Title not found !");
+    });
 }());

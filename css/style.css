@@ -1243,4 +1243,33 @@ canvas{
   margin-left :30%;
 }
 
+#controlsContainer{
+  margin-left: 50%;
+  display : inline-block;
+  border-radius: 2px;
+  box-shadow: 1px 1px 5px darkgrey;
+  background: white;
+}
+
+#buttonPlay{
+  display: inline-block;
+  background: #0077ee;
+  padding: 10px 100px;
+  color : white;
+  font-weight: bold;
+  border-radius : 5px;
+  cursor: pointer;
+  text-align: center;
+  font-family: "Source Sans Pro", monospace;
+}
+
+.dataRadio{
+  text-align: center;
+  margin: 0 auto;
+}
+
+#Cover{
+  display: block;
+}
+
 /*# sourceMappingURL=style.css.map */
