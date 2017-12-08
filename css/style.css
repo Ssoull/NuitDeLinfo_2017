@@ -1244,7 +1244,6 @@ canvas{
 }
 
 #controlsContainer{
-  margin-left: 50%;
   display : inline-block;
   border-radius: 2px;
   box-shadow: 1px 1px 5px darkgrey;
@@ -1270,6 +1269,16 @@ canvas{
 
 #Cover{
   display: block;
+}
+
+#twitter {
+    position: absolute;
+    float: left;
+}
+
+.controller{
+  width: 50%;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=style.css.map */
