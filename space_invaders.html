@@ -147,6 +147,7 @@
             var left=false;
             var right=false;
             var t=false;
+            var loose=false;
             var ship = new Image();
             ship.src = "images/Space_invaders_Rayman.png";
             var alien = new Image();
@@ -156,7 +157,9 @@
             var missile =new Image();
             missile.src = "images/Space_invaders_poing.png";
             var go = new Image();
-            go.src="images/gameover.png";
+            go.src="images/Space_invaders_gameover.png";
+            var victoire = new Image();
+            victoire.src="images/Space_invaders_victoire.png";
 
 
             var aliens =[[100,150,1],[150,150,1],[200,150,1],[250,150,1],[300,150,1],[350,150,1],[400,150,1],[450,150,1],[500,150,1],[550,150,1],
@@ -193,15 +196,15 @@
                 context.clearRect(0,0,675,800);
                 context.beginPath();
                 context.fillStyle="#000000";
-                if (vivants >0){
+                if (vivants >0 && !loose){
                     context.drawImage(ship,x,y,32,40);
                 }
 
                 decal=decalage;
                 for (var pas = 0;pas<aliens.length;pas++){
 
-                    if (aliens[pas][2]==1){
-                        if ((decal==decalage)&&(aliens[pas][0]<=20 || aliens[pas][0]>=640)){
+                    if (aliens[pas][2]==1 && !loose){
+                        if ((decal==decalage)&&(aliens[pas][0]<20 || aliens[pas][0]>640)){
                             decalage*=-1;
                             for (var i=0;i<aliens.length;i++){
                                 aliens[i][1]+=10;
@@ -209,25 +212,22 @@
 
 
                         }
-                        if (aliens[pas][1]==720) {
-                            context=game_area.getContext('2d');
-                            context.clearRect(0,0,675,800);
-                            context.drawImage(gameover,152,280,360,240);
-                            onexit();
+                        if (aliens[pas][1]>=720) {
+                            loose = true;
 
                         }
                         if (decalage>0)
                         	context.drawImage(alien2,aliens[pas][0],aliens[pas][1],32,32);
                         if (decalage<0)
                             context.drawImage(alien,aliens[pas][0],aliens[pas][1],32,32);
-                        aliens[pas][0]+=decalage;
+                        aliens[pas][0]+=(decalage);
                     }
 
                 }
 
 
 
-                if(t && delai_missile==0){
+                if(t && delai_missile==0 && vivants>0 && !loose){
 
                     delai_missile=20;
                     tab_missile[numero_missile][0]=x+8;
@@ -245,7 +245,7 @@
                 }
 
                 for (var j= 0;j<tab_missile.length;j++){
-                    if (tab_missile[j][2]==1){
+                    if (tab_missile[j][2]==1 && vivants>0 && !loose){
                         tab_missile[j][1]-=5;
                         context.drawImage(missile,tab_missile[j][0],tab_missile[j][1],16,16);
 
@@ -264,6 +264,13 @@
 
                     }
                 }
+
+                if (vivants == 0){
+                    context.drawImage(victoire,150,280,226,227);
+				}
+				if (loose){
+                    context.drawImage(go,150,280,640,360);
+				}
 
 
 
